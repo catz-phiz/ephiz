@@ -42,8 +42,17 @@
                 <label class="inline-block mb-2">Repeat password</label></br>
                 {{form.password2}}
             </div>
+
             
             <p class="mt-8"> You already have an account? <a href="{% url 'core:login' %}" class="underline text-blue-500 hover:text-blue-700">Log in</a></p>
+
+            <p class="text-gray-500 mt-4">
+                <span class="text-red-500">*NOTE</span> </br>
+                Your password can’t be too similar to your other personal information. </br>
+                Your password must contain at least 8 characters. </br>
+                Your password can’t be a commonly used password. </br>
+                Your password can’t be entirely numeric. </br>
+            </p>
 
             <button class="mt-8 px-8 py-4 text-lg bg-blue-500 hover:bg-blue-700 rounded-xl text-white">Submit</button>
         </form>
