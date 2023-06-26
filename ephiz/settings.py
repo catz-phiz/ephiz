@@ -27,7 +27,7 @@ load_dotenv()
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -59,6 +59,15 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://web-production-3c37.up.railway.app'
+]
+
+CORS_ALLOWED_ORIGINS = [
+    'https://web-production-3c37.up.railway.app'
+]
+
 ROOT_URLCONF = 'ephiz.urls'
 
 TEMPLATES = [
@@ -137,6 +146,3 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CSRF_TRUSTED_ORIGINS = [
-    'https://web-production-3c37.up.railway.app/'
-]
