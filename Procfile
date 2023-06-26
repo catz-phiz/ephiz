@@ -1,0 +1,1 @@
+web: gunicorn ephiz.wsgi --log-file -
