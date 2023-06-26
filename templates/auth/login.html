@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title%} 
+    Log in 
+{% endblock %}
+
+{% block content%}
+    <div class="w-1/2 my-6 mx-auto bg-gray-100 rounded-xl p-6">
+        <h1 class="mb-6 text-3xl">Log in</h1>
+
+        <form method="post" action=".">
+            {% csrf_token %}
+
+            <div class="mb-3">
+                <label class="inline-block mb-2">Username</label></br>
+                {{form.username}}
+            </div>
+
+            <div class="mb-3">
+                <label class="inline-block mb-2">Password</label></br>
+                {{form.password}}
+            </div>
+
+            {% if from.errors or form.non_fiels_errors %}
+                <div class="mb-3 p-6 bg-red-100 rounded-xl">
+                    <p>Something went wrong</p>
+                </div>
+            {% endif %}
+
+            <p class="mt-8">You don't have an account? <a href="{% url 'core:signup' %}" class="underline text-blue-500 hover:text-blue-700">Register</a></p>
+
+            <button class="mt-8 px-8 py-4 text-lg bg-blue-500 hover:bg-blue-700 rounded-xl text-white">Submit</button>
+        </form>
+    </div>
+{%endblock%}

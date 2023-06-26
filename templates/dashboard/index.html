@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Dashboard
+{% endblock %}
+
+{% block content %}
+    <div class="mt-6 px-6 py-12 bg-gray-100 rounded-xl">
+        <h2 class="mb-12 font-semibold text-2xl text-center">My items</h2>
+
+        <div>
+            <div class="w-full grid grid-cols-12 mb-4 font-semibold text-xl">
+                <div class="border-r-2 border-b-2 text-center col-span-2 pb-2">Image</div>
+                <div class="border-r-2 border-b-2 text-center col-span-2 pb-2">Name</div>
+                <div class="border-r-2 border-b-2 text-center col-span-2 pb-2">Price</div>
+                <div class="border-r-2 border-b-2 text-center col-span-3 pb-2">Created At</div>
+                <div class="border-b-2 text-center col-span-3 pb-2">-----</div>
+            </div>
+            {% for item in items%}
+                <div class="leading-10 w-full grid grid-cols-12 mb-4">
+                    <div class="border-r-2 m-auto col-span-2">
+                        <a href="{% url 'item:detail' item.id %}"><img src="{{item.image.url}}" class="object-fill h-20 w-24"/></a>
+                    </div>
+                    <div class="leading-10 border-r-2 text-center col-span-2 text-lg pt-6">{{item.name}}</div>
+                    <div class="leading-10 border-r-2 text-center col-span-2 text-lg pt-6">{{item.price}}</div>
+                    <div class="leading-10 border-r-2 text-center col-span-3 text-lg pt-6">{{item.createdAt}}</div>
+                    <div class="text-center col-span-3 flex justify-around pb-4">
+                        <a href="{% url 'item:edit' item.id %}" class="inline-block mt-6 px-6 py-3 text-lg font-semibold bg-blue-500 hover:bg-blue-700 text-white rounded-xl">Edit</a>
+                        <a href="{% url 'item:delete' item.id %}" class="inline-block mt-6 px-6 py-3 text-lg font-semibold bg-red-500 hover:bg-red-700 text-white rounded-xl">Delete</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
